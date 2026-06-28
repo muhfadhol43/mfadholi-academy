@@ -1,0 +1,39 @@
+<svg width="600" height="500" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef1ff" />
+      <stop offset="100%" stop-color="#fff1f4" />
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c7ff5" />
+      <stop offset="100%" stop-color="#4b3fd1" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="300" cy="180" r="300" fill="url(#sky)" />
+  <circle cx="430" cy="120" r="80" fill="#ff94ae" opacity="0.5" />
+
+  <!-- Mount Fuji -->
+  <path d="M120 380 L300 120 L480 380 Z" fill="url(#mountain)" />
+  <path d="M250 220 L300 120 L350 220 L320 240 L280 240 Z" fill="#ffffff" opacity="0.85" />
+
+  <!-- Torii gate -->
+  <g transform="translate(110,250)">
+    <rect x="0" y="0" width="14" height="120" fill="#e21752" />
+    <rect x="120" y="0" width="14" height="120" fill="#e21752" />
+    <rect x="-15" y="0" width="164" height="16" rx="3" fill="#bd0c44" />
+    <rect x="0" y="30" width="134" height="10" fill="#bd0c44" />
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="380" width="600" height="120" fill="#ffe1e8" />
+
+  <!-- Sakura blossoms -->
+  <g fill="#ff94ae" opacity="0.8">
+    <circle cx="80" cy="420" r="10" />
+    <circle cx="100" cy="440" r="8" />
+    <circle cx="520" cy="410" r="12" />
+    <circle cx="550" cy="440" r="9" />
+    <circle cx="40" cy="460" r="7" />
+  </g>
+</svg>
