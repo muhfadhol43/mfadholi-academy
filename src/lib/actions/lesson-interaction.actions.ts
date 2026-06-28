@@ -23,7 +23,12 @@ export async function markLessonCompleteAction(lessonId: string, courseId: strin
 
   if (error) return { success: false, message: "Gagal menandai lesson selesai." };
 
-  await supabase.rpc("recompute_course_progress", { p_user_id: user.id, p_course_id: courseId }).catch(() => null);
+  try {
+    await supabase.rpc("recompute_course_progress", { p_user_id: user.id, p_course_id: courseId });
+  } catch {
+    // ignore error silently
+  }
+
   await supabase.from("course_progress").update({ last_lesson_id: lessonId }).eq("user_id", user.id).eq("course_id", courseId);
 
   revalidatePath("/dashboard");
@@ -97,9 +102,11 @@ export async function submitQuizAttemptAction(payload: {
 
   if (error) return { success: false, message: "Gagal menyimpan hasil quiz." };
 
-  await supabase
-    .rpc("recompute_course_progress", { p_user_id: user.id, p_course_id: payload.courseId })
-    .catch(() => null);
+  try {
+    await supabase.rpc("recompute_course_progress", { p_user_id: user.id, p_course_id: payload.courseId });
+  } catch {
+    // ignore error silently
+  }
 
   return { success: true, message: "Hasil quiz berhasil disimpan." };
 }

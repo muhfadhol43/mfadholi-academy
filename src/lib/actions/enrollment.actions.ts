@@ -34,7 +34,11 @@ export async function enrollCourseAction(courseId: string): Promise<ActionResult
     return { success: false, message: "Gagal mendaftar kelas." };
   }
 
-  await supabase.rpc("increment_total_students", { course_id_input: courseId }).catch(() => null);
+  try {
+    await supabase.rpc("increment_total_students", { course_id_input: courseId });
+  } catch {
+    // ignore error silently
+  }
 
   revalidatePath(`/dashboard`);
   return { success: true, message: "Berhasil mendaftar! Selamat belajar." };
